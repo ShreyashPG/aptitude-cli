@@ -1,93 +1,61 @@
-# Aptitude Test CLI 🧠🖥️
 
-A command-line based aptitude test application built with Go, designed to test and score users within a set timer. Questions are loaded from a JSON file and categorized by difficulty levels.
+# Aptitude CLI Application
 
----
+This is a Go-based CLI aptitude test application that provides various test options including time-based tests, random question tests, and difficulty-based tests (Easy, Medium, Hard). It loads questions from a JSON file (`Aptitude.json`) and allows the user to take quizzes interactively.
 
-## ✨ Features
+## Features
 
-- ⏱️ Customizable timer for the whole test
-- 🎯 Choose difficulty level: easy, medium, hard, or random
-- ✅ Each question is unique (no repeats during a session)
-- 📊 Instant scoring at the end
-- 🗂️ Questions loaded from a JSON file
-- 🧪 Clean and interactive CLI experience
+- **Time-based Aptitude Test**: User can set a time limit and answer questions within the given time frame.
+- **Random Questions**: Randomized questions from the available pool.
+- **Difficulty-based Questions**: User can choose questions based on difficulty level: Easy, Medium, or Hard.
+- **Interactive CLI**: The user interacts with the application via terminal input.
+- **Scoring**: The app tracks and displays the user's score at the end of the test.
 
----
+## Installation
 
-## 📁 Project Structure
+1. Clone the repository or download the code.
+2. Make sure you have [Go](https://golang.org/doc/install) installed on your machine.
+3. Place the `Aptitude.json` file (containing the questions data) in the same directory as the Go code.
 
-```
-aptitude-cli/
-│
-├── main.go                # Entry point
-├── questions.json         # All aptitude questions
-├── go.mod                 # Go module file
-└── utils/
-    ├── file.go            # Load and filter questions
-    └── timer.go           # Countdown timer logic
-```
+## Usage
 
----
+### Step 1: Run the Docker container
 
-## 🛠️ Getting Started
+Build the Docker image for the app:
 
-### 1. Clone the repo
 ```bash
-git clone https://github.com/ShreyashPG/aptitude-cli.git
-cd aptitude-cli
+docker build -t aptitude-cli .
 ```
 
-### 2. Build the CLI
+Run the Docker container with the interactive flag:
+
 ```bash
-go build -o aptitude-test
+docker run --rm -it aptitude-cli
 ```
 
-### 3. Run the test
-```bash
-./aptitude-test --time=60 --level=easy
-```
+### Step 2: Select a Test Option
 
-**Flags:**
-- `--time` = total test time in seconds
-- `--level` = question difficulty (`easy`, `medium`, `hard`, `random`)
+After running the app, you will be presented with the following options:
 
----
+1) Time Limit Aptitude Test
+2) Solve Questions Randomly
+3) Solve Easy Questions
+4) Solve Medium Questions
+5) Solve Hard Questions
 
-## 📝 questions.json Format
+### Step 3: Answer the Questions
 
-Each question must follow this structure:
+Once you select an option, follow the on-screen instructions to take the test. You will be prompted to answer each question, and the app will provide feedback on whether your answer is correct or wrong.
 
-```json
-{
-  "question": "What is 2 + 2?",
-  "options": ["1", "2", "3", "4"],
-  "answer": "4",
-  "difficulty": "easy"
-}
-```
+### Step 4: View Results
 
-- Store all 90 questions in `questions.json`
-- Difficulty should be one of: `easy`, `medium`, `hard`
+At the end of the test, the application will display your score.
 
----
+## Requirements
 
-## 📌 TODO
+- Go 1.21 or higher
+- Docker (for running in containerized environment)
 
-- [ ] Add per-question timer (optional)
-- [ ] Save scores to file
-- [ ] Review incorrect answers at the end
-- [ ] Export score summary
+## License
 
----
-
-## 👨‍💻 Author
-
-**Shreyash Ghanekar**  
-[GitHub: ShreyashPG](https://github.com/ShreyashPG)
-
----
-
-## 🧾 License
-
-This project is licensed under the MIT License. Feel free to fork, improve, and share!
+MIT License
